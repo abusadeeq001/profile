@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Card Component</title>
+  <style>
+    
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: hsl(192, 75%, 81%);
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  max-width: 400px;
+  width: 100%;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+}
+
+.profile-card img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.details {
+  margin-top: 1rem;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form {
+  background: white;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <main>
+    <section class="profile-card" id="profile-card">
+      <figure>
+        <img src="PP.JPG" alt="Profile photo" />
+        <figcaption>
+          <h2 id="name">Abubakar sadeeq</h2>
+          <p id="title">Frontend Developer</p>
+        </figcaption>
+      </figure>
+      <div class="details">
+        <p><strong>Location:</strong> <span id="location">Abuja, Nigeria</span></p>
+        <p><strong>Email:</strong> <span id="email">sadeeq@gmail.com</span></p>
+        <button id="edit-btn">Edit Profile</button>
+      </div>
+    </section>
+
+    <form id="edit-form" class="hidden">
+      <h3>Edit Profile</h3>
+      <label>
+        Name:
+        <input type="text" id="edit-name" required />
+      </label>
+      <label>
+        Title:
+        <input type="text" id="edit-title" required />
+      </label>
+      <label>
+        Location:
+        <input type="text" id="edit-location" required />
+      </label>
+      <label>
+        Email:
+        <input type="email" id="edit-email" required />
+      </label>
+       
+      <button type="submit">Save</button>
+    </form>
+  </main>
+
+  <script>
+    
+const editBtn = document.getElementById("edit-btn");
+const form = document.getElementById("edit-form");
+
+editBtn.addEventListener("click", () => {
+  form.classList.toggle("hidden");
+  document.getElementById("edit-name").value = document.getElementById("name").textContent;
+  document.getElementById("edit-title").value = document.getElementById("title").textContent;
+  document.getElementById("edit-location").value = document.getElementById("location").textContent;
+  document.getElementById("edit-email").value = document.getElementById("email").textContent;
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  document.getElementById("name").textContent = document.getElementById("edit-name").value;
+  document.getElementById("title").textContent = document.getElementById("edit-title").value;
+  document.getElementById("location").textContent = document.getElementById("edit-location").value;
+  document.getElementById("email").textContent = document.getElementById("edit-email").value;
+  form.classList.add("hidden");
+});
+
+  </script>
+</body>
+</html>
